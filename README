@@ -1,0 +1,50 @@
+Ruleta
+/*Ruleta dinámica para interactuar con participantes...
+
+En esta actividad tienemos un script para crear una ruleta que sortea nombres en un canvas HTML. Aquí hay una explicación del código proporcionado:
+
+1.-Declaración del Array de Concursantes
+
+2.-Configuración del Canvas y el Contexto:
+
+javascript let canvas = document.getElementById("idcanvas"); let context = canvas.getContext("2d"); let center = canvas.width / 2; Dibujo de la Ruleta:
+
+3.-Se dibuja un círculo externo:
+
+javascript
+
+context.beginPath(); context.moveTo(center, center); context.arc(center, center, center, 0, 2 * Math.PI); context.lineTo(center, center); context.fillStyle = '#33333333'; context.fill();
+
+4.-Se dibuja un círculo interno:
+
+javascript
+
+context.beginPath(); context.moveTo(center, center); context.arc(center, center, center - 10, 0, 2 * Math.PI); context.lineTo(center, center); context.fillStyle = 'black'; context.fill();
+
+5.-División de la Ruleta y Colocación de Nombres:
+
+javascript
+
+for (var i = 0; i < array_concursantes.length; i++) { context.beginPath(); context.moveTo(center, center); context.arc(center, center, center - 20, i * 2 * Math.PI / array_concursantes.length, (i + 1) * 2 * Math.PI / array_concursantes.length); context.lineTo(center, center); context.fillStyle = random_color(); context.fill();
+
+context.save();
+context.translate(center, center);
+context.rotate(3 * 2 * Math.PI / (5 * array_concursantes.length) + i * 2 * Math.PI / array_concursantes.length);
+context.translate(-center, -center);
+context.font = "13px Comic Sans MS";
+context.textAlign = "right";
+context.fillStyle = "white";
+context.fillText(array_concursantes[i], canvas.width - 30, center);
+context.restore();
+} 6.-Función de Sorteo:
+
+javascript
+
+let pos_ini = 0; let clic = 0; let movement;
+
+function sortear() { if (clic == 0) { let canvas = document.getElementById("idcanvas"); movement = setInterval(function () { pos_ini += 10; canvas.style.transform = 'rotate(' + pos_ini + 'deg)'; }, 10); clic = 1; document.getElementById("idestado").innerHTML = "Detener"; } else { clearInterval(movement); clic = 0; document.getElementById("idestado").innerHTML = "Sortear"; } } 7.-Generación de Colores Aleatorios:
+
+javascript
+
+function random_color() { let ar_digit = ['2', '3', '4', '5', '6', '7', '8', '9']; let color = ''; let i = 0; while (i < 6) { let pos = Math.round(Math.random() * (ar_digit.length - 1)); color = color + '' + ar_digit[pos]; i++; } return '#' + color; }
+*/
