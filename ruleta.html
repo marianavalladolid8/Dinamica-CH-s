@@ -6,8 +6,8 @@
     <title>Ruleta</title>
     <link rel="stylesheet" href="ruleta.css">
 </head>
-<body>
-    <div class="contenedor">
+<body> <!--Se crea div contenedor -->
+    <div class="contenedor"> 
 		<h1>CH 44 Mujeres Generation</h1>
 		<div class="concursantes">
 			<canvas id="idcanvas" width="600" height="600"></canvas>
@@ -15,8 +15,8 @@
 			<button onclick="sortear()"><span id="idestado">Sortear</span></button>
 			<div class="mark-winner"></div>
 		</div>
-	</div>
-	<script type="text/javascript">
+	</div> 
+	<script type="text/javascript"> /*Se declaran a las concursantes dentro del Array*/
         const array_concursantes=
 		[
 			'Isis Velazquez'
@@ -48,11 +48,13 @@
 			,'Anayelli Zayas'
 			,'Blanca Arroyo'
 		];
-
+        /*
+         * Con DOM se manipula elementos de front
+        */
 		let canvas=document.getElementById("idcanvas");
 		let context=canvas.getContext("2d");
 		let center=canvas.width/2;
-
+        /*Se dinuja ruleta, circulo y se realizan las dividiones */
 		context.beginPath();
 		context.moveTo(center,center);
 		context.arc(center,center,center,0, 2*Math.PI);
@@ -85,7 +87,7 @@
 			context.fillText(array_concursantes[i], canvas.width-30, center);
 			context.restore();
 		}
-
+        /*Función de sorteo*/
 		let pos_ini=0;
 		let clic=0;
 		let movement;
@@ -104,7 +106,7 @@
 				document.getElementById("idestado").innerHTML="Sortear";
 			}
 		}
-
+        /*Función de colores aleatorios*/
 		function random_color(){
 			let ar_digit=['2','3','4','5','6','7','8','9'];
 			let color='';
